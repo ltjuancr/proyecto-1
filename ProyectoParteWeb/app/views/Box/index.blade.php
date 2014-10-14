@@ -1,5 +1,5 @@
 
- <h1>Vistual Box</h1>
+ <h1>Escucahndo a tía panchita</h1>
 
 
 {{ Form::open(array('url' => 'audio')) }}
