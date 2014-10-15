@@ -1,8 +1,8 @@
 
- <h1>Escucahndo a tía panchita</h1>
+ <h1>Music Box</h1>
+{{ Form::open(array('url' => 'audio','files' => 'true','enctype' => "multipart/form-data")) }}
 
 
-{{ Form::open(array('url' => 'audio')) }}
 	{{ Form::label('audio', 'Audio') }}
 	  <input type="file" name="audio" accept="audio/*">
 	<br>
@@ -12,7 +12,7 @@
 		{{ Form::label('minutos', 'Minutos') }}
 	 <input type="number" name="minutos">
 	<br>
-	{{Form::submit('Convertir', array())}}
+    {{Form::submit('Convertir', array())}}
 
 {{ Form::close() }}
 

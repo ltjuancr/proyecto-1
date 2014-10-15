@@ -11,10 +11,8 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
 
 
-Route::resource('Box', 'BoxController');
+Route::resource('/', 'BoxController');
+
+Route::post('audio', 'BoxController@procesando');

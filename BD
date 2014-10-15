@@ -1,0 +1,18 @@
+﻿create table archivo
+  (
+      id serial,
+      file varchar (500),
+      parts varchar (50),
+      time varchar (50),
+      constraint pk_archivo primary key (id)
+ )
+
+create table url
+(
+     id serial,
+     file varchar (500),
+     id_archivo int not null,
+     constraint pk_url primary key (id),
+     constraint fk_url foreign key (id_archivo) references archivo (id)    
+)
+ 
