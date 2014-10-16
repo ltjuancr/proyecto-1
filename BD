@@ -15,4 +15,7 @@ create table url
      constraint pk_url primary key (id),
      constraint fk_url foreign key (id_archivo) references archivo (id)    
 )
+ select * from archivo
+
+
  

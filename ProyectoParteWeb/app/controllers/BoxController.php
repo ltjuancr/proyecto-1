@@ -84,9 +84,9 @@ protected $layout = 'layouts.default';
 
                 $connection = new AMQPConnection('localhost', 5672, 'guest', 'guest');
                 $channel = $connection->channel();
-                $channel->queue_declare("$id", false, false, false, false);
+                $channel->queue_declare("audio", false, false, false, false);
                 $msg = new AMQPMessage("$mensaje");
-                $channel->basic_publish($msg, '', "$id");
+                $channel->basic_publish($msg, '', "audio");
                 $channel->close();
                 $connection->close();
               
