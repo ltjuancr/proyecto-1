@@ -1,5 +1,5 @@
 <?php
-require ('/home/JUAN_QG/Projects/proyecto-1/ProyectoParteWeb/push/vendor/autoload.php');
+require ('/home/betzy/Desktop/proyecto-1/ProyectoParteWeb/push/vendor/autoload.php');
 use PhpAmqpLib\Connection\AMQPConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
@@ -53,13 +53,26 @@ protected $layout = 'layouts.default';
 		}
 		
 
-       $destinationPath = 'canciones/'.str_random(8);
+       $destinationPath = 'audios/'.str_random(8);
          
        // var_dump($destinationPath);
 
         $filename = $file->getClientOriginalName();
-         
-      //   var_dump($filename);
+
+
+        $filename = str_replace(
+        array("\\", "¨", "º", "-", "~",
+             "#", "@", "|", "!", "\"",
+             "·", "$", "%", "&", "/",
+             "(", ")", "?", "'", "¡",
+             "¿", "[", "^", "`", "]",
+             "+", "}", "{", "¨", "´",
+             ">", "< ", ";", ",", ":",
+             ".", " ","_",$extension),'',$filename);
+
+        $filename = $filename.".".$extension;
+        // $filename = str_replace(' ', '', $filename);
+        // var_dump($filename);
        $uploadSuccess = $file->move($destinationPath, $filename);
          if($uploadSuccess)
          {
@@ -95,7 +108,9 @@ protected $layout = 'layouts.default';
 		$this->layout->nest(
 			'content',
 			'Box.procesando',
-			array()
+			array(
+
+				)
 		);
 	}
 }
