@@ -47,9 +47,11 @@
 		if($horas > 0){
 			$horas = $horas*60;
            $totalSegundos += $horas*60;
+           var_dump($totalSegundos."segundos con las horas");
 		}       
 		if($minutos > 0){
             $totalSegundos += $minutos*60;
+            var_dump($totalSegundos."segundos con las horas minutos");
 		}
 		//var_dump("segundos totales".$totalSegundos);
 		$horas = "0";
@@ -63,11 +65,12 @@
              if($minutos > 59)
              {
                 $horas = $minutos / 60;
+                $minutos='0';
                 if(is_float($horas))
                 {
 	                $horas =  explode(".", $horas);
-	                $horas = $horas[0];
 	                $minutos = '0.'.$horas[1];
+	                $horas = $horas[0];
 	                $minutos = $minutos * 60;
 	                if(is_float($minutos))	                	
                     {
@@ -161,13 +164,13 @@
 	              	                
 	                //var_dump($minutos);
                     //var_dump($hora.':'.$minutos);
-                    $duracion = "0.".$hora.":".$minutos.":"."00".".00";
+                    $duracion = "0".$hora.":".$minutos.":"."00".".00";
 	        } 
 	        else
 	        {                       
                  $duracion = "00".":".$minutos.":"."00".".00";
             }
-  // var_dump($duracion);
+   var_dump($duracion);
     }  
    $fin = "00:00:00.00";
     //$duracion = "00:01:59.07";
@@ -214,7 +217,7 @@
 
 				#Efectuamos la consulta SQL
 				$URL = $ruta[2].$numero.".".$ruta[3];
-				var_dump($URL);
+				//var_dump($URL);
 				$query = "insert into url(file,id_archivo) values ('".$URL."','".$id."')";
 				$result = pg_query ($conexion, $query) or die("Error en la consulta SQL");
 				pg_close($conexion);
@@ -227,43 +230,43 @@
 		var_dump($segundosDuracion."  duracion restante");
 
        list($horas,$minutos,$segundos,$microsegundos) = split("[:.]",$fin); 
-
+       list($horas2,$minutos2,$segundos2,$microsegundos2) = split("[:.]",$duracion); 
         $totalSegundos = $segundos + $segundos2;
-       var_dump($totalSegundos."segundos sumanos");
 		if($horas > 0){
 			$horas = $horas*60;
-           $totalSegundos += $horas*60;
-        var_dump($totalSegundos."segundos sumanos");
+            $totalSegundos += $horas*60;
+        //var_dump($totalSegundos."segundos sumados");
 		}       
 		if($minutos > 0){
             $totalSegundos += $minutos*60;
-             var_dump($totalSegundos."segundos sumanos");
+            // var_dump($totalSegundos."segundos sumados");
 		}
 
 		if($horas2 > 0){
 		   $horas2 = $horas2*60;
            $totalSegundos += $horas2*60;
-             var_dump($totalSegundos."segundos sumanos22");
+             var_dump($totalSegundos."segundos sumados22");
 		}
 	     if($minutos2 > 0){
            $totalSegundos += $minutos2*60;
-             var_dump($totalSegundos."segundos sumanos22");
+             var_dump($totalSegundos."segundos sumados22");
 		}
 		$horas = "0";
         $minutos ="0";
         $segundos = "0";
-          var_dump($totalSegundos."total de segundos sumanos");
+          var_dump($totalSegundos."total de segundos sumados");
          if($totalSegundos > 59)
          {
              $minutos = $totalSegundos / 60;
              if($minutos > 59)
              {
                 $horas = $minutos / 60;
+                $minutos='0';
                 if(is_float($horas))
                 {
 	                $horas =  explode(".", $horas);
-	                $horas = $horas[0];
 	                $minutos = '0.'.$horas[1];
+	                $horas = $horas[0];
 	                $minutos = $minutos * 60;
 	                if(is_float($minutos))	                	
                     {

@@ -1,5 +1,5 @@
 <?php
-require ('/home/betzy/Desktop/ProyectoAudioLibro/proyecto-1/ProyectoParteWeb/push/vendor/autoload.php'); //Librerias Rabbit
+require ('/home/JUAN_QG/Projects/proyecto-1/ProyectoParteWeb/push/vendor/autoload.php'); //Librerias Rabbit
 use PhpAmqpLib\Connection\AMQPConnection;//Libreria de conexión
 use PhpAmqpLib\Message\AMQPMessage; //Libreria para obtener los mensajes
 
