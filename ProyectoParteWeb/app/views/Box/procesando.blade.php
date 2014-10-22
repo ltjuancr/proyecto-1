@@ -3,45 +3,8 @@
 <html>
 <head>
 	<meta charset="utf-8">
-  <style type="text/css">
-    body {
-          padding-top: 50px;
-    }
-    .starter-template {
-      padding: 40px 15px;
-      text-align: center;
-    }
+  {{HTML::style('style/index.css')}}
 
-    p{
-      text-align: center;
-    }
-
-    progress[value] {
-      /* Elimino la apariencia por defecto */
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-       
-      /* Quito el borde que aparece en Firefox */
-      border: none;
-   
-      /* Añado mis propios estilos */
-      width: 1170px;
-      height: 40px;
-      overflow:hidden;
-       
-  /*  Estos estilos solo se aplicaran al fondo de la barra en mozilla */
-      border:1px inset #666;
-      background-color:#D8D8D8;
-      border-radius : 20px ;
-    }
-   
-   progress::-moz-progress-bar{
-      background: #FF8000;
-      border-radius : 20px;
-   }
-
-  </style>
   <script type="text/javascript">
       var progresso = new Number();
       var maximo = new Number(); 
@@ -61,33 +24,50 @@
               setTimeout("start();",100);
               
             }
-            
+          } 
 
-          }
- 
-      
+      $(function(){
+          //configuraciones
+          var _elem       = $('.animar-entrada');     //usar selector CSS para determinar los elementos a los que se aplica el efecto
+          var _velocidad  = 400;                      //duración de la animación
+          var _demora     = 200;                      //pausa entre cada letra
+          //..
+          _elem.each(function(){
+              //acciones para cada elemento seleccionado
+              var $esto = $(this);
+              var arr_letras = $esto.text().split('');    //dividir el texto letra por letra
+              $esto.html('');                             //vaciar el html del elemento
+              for (var i=0; i<arr_letras.length; i++){    //encerrar cada letra en un <span> con clase especial, solo para identificarla
+                  arr_letras[i] = $('<span class="jq-letra">' + arr_letras[i] + '</span>').hide();    //crear el elemento y ocultarlo
+                  $esto.append(arr_letras[i]);                                                        //agregar elemento al texto
+                  arr_letras[i].delay( i * _demora ).fadeIn(_velocidad);                              //mostrar letra con efecto
+              }
+          });
+      });
   </script>
   
 </head>
 
 <body onload="start();">
-  <p>Processing file</p>
-	<div class="progress">
-      <progress max="100" id="barra"></progress>
-      
+  <div id="container2" >
+    <p class="animar-entrada">Processing file</p>
+    <br>
+  	<div class="progress">
+        <progress max="100" id="barra"></progress>
+        
+    </div>
   </div>
-
-
-
-<table border= "solid" width= "50%">
-  <tr>
-    <th>Id</th>
-    <th>File</th>
-    <th>Id File</th>
-  </tr>
-  
-</table>
-
+    <br>
+    <center>
+      <table border= "solid;" width= "90%;">
+        <tr>
+          <th>ID</th>
+          <th>File</th>
+          <th>ID File</th>
+        </tr>
+        
+      </table>
+    </center>
 </body>
 </html>
 

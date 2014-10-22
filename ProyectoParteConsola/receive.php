@@ -2,6 +2,7 @@
 <?php
 	require_once __DIR__ . '/vendor/autoload.php';
 	use PhpAmqpLib\Connection\AMQPConnection;
+		//Conexión 
 		$connection = new AMQPConnection('localhost', 5672, 'guest', 'guest');
 		$channel = $connection->channel();
 		$channel->queue_declare('audio', false, false, false, false);		
@@ -16,9 +17,11 @@
 	$file = $mensaje["file"];
 	$partes = $mensaje["parts"];
     $time = $mensaje["time_per_chunk"];
+    var_dump($file);
 
-	$tiempo = shell_exec('ffmpeg -i ' . $file . ' 2>&1 |grep -oP "[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{2}"');           
+	$tiempo = shell_exec('ffmpeg -i '.$file.' 2>&1 |grep -oP "[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{2}"');           
 	$array = explode("/", $file);
+	var_dump($array);
     $status = count($array)-1;          
     $fileName = $array[$status];
     //var_dump($fileName);
