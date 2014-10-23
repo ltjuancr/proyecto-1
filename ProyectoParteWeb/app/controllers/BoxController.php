@@ -1,5 +1,5 @@
 <?php
-require ('/home/JUAN_QG/Projects/proyecto-1/ProyectoParteWeb/push/vendor/autoload.php'); //Librerias Rabbit
+require ('/home/betzy/Desktop/ProyectoAudioLibro/proyecto-1/ProyectoParteWeb/push/vendor/autoload.php'); //Librerias Rabbit
 use PhpAmqpLib\Connection\AMQPConnection;//Libreria de conexión
 use PhpAmqpLib\Message\AMQPMessage; //Libreria para obtener los mensajes
 
@@ -115,7 +115,7 @@ protected $layout = 'layouts.default';
                 $connection->close();
               
          }
-         //7:45
+         
 		$this->layout->titulo = '';
 		$this->layout->nest(
 			'content',

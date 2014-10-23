@@ -35,7 +35,7 @@
 
 			{{ Form::open(array('url' => 'audio','files' => 'true','enctype' => "multipart/form-data")) }}
 
-				<div id="label">
+				<div style="margin-left: 300px;">
 					{{ Form::label('audio', 'Audio:') }}
 				</div>
 				<div id="input" style="color: white;">
@@ -43,14 +43,14 @@
 				</div>
 				<br>
 
-				<div style="margin-left: 200px;">
+				<div style="margin-left: 300px;">
 					{{ Form::label('partes', 'Cantidad de Partes: ') }}
 				</div>
 				<div id="input">
 				 	<input type="number" name="partes">
 				 </div>
 				<br>
-				<div style="margin-left: 320px;">
+				<div style="margin-left: 300px;">
 					{{ Form::label('minutos', 'Minutos:') }}
 				</div>
 				<div id="input">
